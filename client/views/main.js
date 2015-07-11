@@ -10,7 +10,7 @@ function Board (ppl) {
     this.getRandomPerson = function(){
         var person = unasignedPeople.shift();
         return person;
-    }
+    };
 
     this.hash['merlin'] = new Merlin(this.getRandomPerson());
     this.hash['percival'] = new Percival(this.getRandomPerson());
@@ -107,20 +107,27 @@ function Assasin(name) {
     this.sees = ['dumbRed', 'assasin', 'mordrid'];
 }
 
-
 Template.main.helpers({
     counter: function () {
         return Session.get('counter');
+    },
+
+    players: function() {
+        return Session.get('numPlayers');
     }
 });
 
 Template.main.rendered = function() {
-
-}
+    Session.set("numPlayers", [1, 2, 3, 4, 5]);
+};
 
 Template.main.events({
+
     'click .add-person': function () {
-        $(".names").append('<input class="name" type="text"><br>');
+
+        var current = Session.get('numPlayers');
+        current.push(current.length + 1);
+        Session.set('numPlayers', current);
     },
 
     'click .submit': function (e, tmpl) {
@@ -132,8 +139,12 @@ Template.main.events({
                 names.push(name);
         });
 
-        Session.set('board', new Board(names).hash);
-        Router.go('characterList');
+        if(names.length < 5) {
+            $('.error').removeClass('hidden');
+        } else {
+            Session.set('board', new Board(names).hash);
+            Router.go('characterList');
+        }
     }
 });
 

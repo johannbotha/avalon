@@ -1,13 +1,30 @@
 
 <template name="main">
-    <div class="names">
-        <input class="name" type="text"><br>
-        <input class="name" type="text"><br>
-        <input class="name" type="text"><br>
-        <input class="name" type="text"><br>
-        <input class="name" type="text"><br>
+
+    <div class="container">
+        <h1>Avalon Online</h1>
+        <div class="names">
+
+            <form class="form-horizontal">
+                <fieldset class="names-form">
+
+                    <legend>Players</legend>
+
+                    {{#each players}}
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="player{{this}}">Player {{this}}</label>
+                            <div class="col-md-4">
+                                <input name="player{{this}}" type="text" placeholder="Player {{this}}" class="form-control input-md name">
+                            </div>
+                        </div>
+                    {{/each}}
+
+                </fieldset>
+            </form>
+        </div>
+
+        <button class="btn btn-default add-person">Add Person</button>
+        <button class="btn btn-primary submit">Submit</button>
     </div>
-    <button class="add-person">Add Person</button>
-    <button class="submit">Submit</button>
-    <p>You've pressed the button {{counter}} times.</p>
+
 </template>

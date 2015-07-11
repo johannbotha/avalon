@@ -10,3 +10,9 @@ Template.characterList.helpers({
         return names;
     }
 });
+
+Template.characterList.events = {
+    'click .person-name': function (event) {
+       console.log('foo');
+    }
+}

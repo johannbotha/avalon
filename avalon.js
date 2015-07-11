@@ -19,6 +19,7 @@ if (Meteor.isClient) {
     this.character =  'percival';
     this.name = name;
     this.sees = ['merlin', 'morgana'];
+    
   }
 
   function DumbBlue1(name) {

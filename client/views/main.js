@@ -40,7 +40,7 @@ function Merlin(name) {
     this.color =  'blue';
     this.character =  'merlin';
     this.name = name;
-    this.sees = [];
+    this.sees = ['morgana', 'dumbRed', 'assasin'];
 }
 
 function Mordrid(name) {
@@ -142,7 +142,9 @@ Template.main.events({
         if(names.length < 5) {
             $('.error').removeClass('hidden');
         } else {
-            Session.set('board', new Board(names).hash);
+            var board = new Board(names).hash;
+            Session.set('board', board);
+            Session.set('names', _.indexBy(board, 'name'));
             Router.go('characterList');
         }
     }

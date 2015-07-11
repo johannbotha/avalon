@@ -6,4 +6,8 @@ Router.map(function(){
     this.route('characterList', {
         path: '/characters'
     });
+
+    this.route('preview', {
+        path: '/preview'
+    });
 });

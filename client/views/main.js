@@ -16,7 +16,7 @@ function Board (ppl) {
     this.hash['percival'] = new Percival(this.getRandomPerson());
     this.hash['morgana'] = new Morgana(this.getRandomPerson());
     this.hash['dumbBlue1'] = new DumbBlue1(this.getRandomPerson());
-    this.hash['mordred'] = new Mordrid(this.getRandomPerson());
+    this.hash['mordred'] = new Mordred(this.getRandomPerson());
 
     if (numOfPPl == 6){
         this.hash['dumbBlue2'] = new DumbBlue2(this.getRandomPerson());

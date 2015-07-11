@@ -22,6 +22,13 @@ Template.characterList.events = {
         console.log('role ', position.character);
         console.log('you see: ', _.shuffle(characters));
         console.log('played by: ', _.shuffle(players));
-        console.log()
+
+        Session.set('currentPlayer', {
+            'role': position.character,
+            'characters': _.shuffle(characters).join(', '),
+            'players': _.shuffle(players).join(', ')
+        });
+
+        Router.go('preview')
     }
-}
+};

@@ -19,7 +19,6 @@ Template.characterList.events = {
             return board[element].name;
         });
 
-        console.log('role ', position.character);
         console.log('you see: ', _.shuffle(characters));
         console.log('played by: ', _.shuffle(players));
 

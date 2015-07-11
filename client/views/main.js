@@ -118,7 +118,14 @@ Template.main.helpers({
 });
 
 Template.main.rendered = function() {
-    Session.set("numPlayers", [1, 2, 3, 4, 5]);
+    Session.set("numPlayers",
+    [
+        { value: 1, necessary: true },
+        { value: 2, necessary: true },
+        { value: 3, necessary: true },
+        { value: 4, necessary: true },
+        { value: 5, necessary: true }
+    ]);
 };
 
 Template.main.events({
@@ -126,27 +133,55 @@ Template.main.events({
     'click .add-person': function () {
 
         var current = Session.get('numPlayers');
-        current.push(current.length + 1);
+
+        if(current.length > 9) {
+            $('.error')
+                .html('You cannot have more than 10 players')
+                .removeClass('hidden');
+
+            return;
+        }
+
+        current.push({
+            value: current.length + 1,
+            necessary: false
+        });
+
+        Session.set('numPlayers', current);
+    },
+
+    'click .js-remove-player': function(e) {
+
+        e.preventDefault();
+
+        var current = Session.get('numPlayers');
+
+        current.pop();
+
         Session.set('numPlayers', current);
     },
 
     'click .submit': function (e, tmpl) {
         var names = [];
-        $(".name").each(function() {
+        $('.name').each(function() {
             var name = $(this).val();
-            console.log(name);
-            if(name)
+
+            if(name) {
                 names.push(name);
+            }
         });
 
         if(names.length < 5) {
-            $('.error').removeClass('hidden');
-        } else {
-            var board = new Board(names).hash;
-            Session.set('board', board);
-            Session.set('names', _.indexBy(board, 'name'));
-            Router.go('characterList');
+            $('.error')
+                .html('You must have at least 5 players')
+                .removeClass('hidden');
+            return;
         }
+
+        var board = new Board(names).hash;
+        Session.set('board', board);
+        Session.set('names', _.indexBy(board, 'name'));
+        Router.go('characterList');
     }
 });
 

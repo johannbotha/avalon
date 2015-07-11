@@ -1,6 +1,9 @@
 
 <template name="characterList">
-   {{#each names}}
-       <div class="person-name">{{this}}</div>
-   {{/each}}
+    <div class="container">
+        <h1>Players</h1>
+        {{#each names}}
+            <div class="person-name">{{this}}</div>
+        {{/each}}
+    </div>
 </template>

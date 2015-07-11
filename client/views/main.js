@@ -16,7 +16,7 @@ function Board (ppl) {
     this.hash['percival'] = new Percival(this.getRandomPerson());
     this.hash['morgana'] = new Morgana(this.getRandomPerson());
     this.hash['dumbBlue1'] = new DumbBlue1(this.getRandomPerson());
-    this.hash['mordrid'] = new Mordrid(this.getRandomPerson());
+    this.hash['mordred'] = new Mordrid(this.getRandomPerson());
 
     if (numOfPPl == 6){
         this.hash['dumbBlue2'] = new DumbBlue2(this.getRandomPerson());
@@ -43,9 +43,9 @@ function Merlin(name) {
     this.sees = ['morgana', 'dumbRed', 'assasin'];
 }
 
-function Mordrid(name) {
+function Mordred(name) {
     this.color =  'red';
-    this.character =  'mordrid';
+    this.character =  'mordred';
     this.name = name;
     this.sees = ['dumbRed', 'assasin', 'morgana'];
 }
@@ -90,21 +90,21 @@ function Morgana(name) {
     this.color =  'red';
     this.character =  'morgana';
     this.name = name;
-    this.sees = ['dumbRed', 'assasin', 'mordrid'];
+    this.sees = ['dumbRed', 'assasin', 'mordred'];
 }
 
 function DumbRed(name) {
     this.color =  'red';
     this.character =  'dumbRed';
     this.name = name;
-    this.sees = ['dumbRed', 'assasin', 'mordrid'];
+    this.sees = ['dumbRed', 'assasin', 'mordred'];
 }
 
 function Assasin(name) {
     this.color =  'red';
     this.character =  'assasin';
     this.name = name;
-    this.sees = ['dumbRed', 'assasin', 'mordrid'];
+    this.sees = ['dumbRed', 'assasin', 'mordred'];
 }
 
 Template.main.helpers({

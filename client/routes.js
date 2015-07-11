@@ -1,5 +1,9 @@
+Router.map(function(){
+    this.route('main', {
+        path: '/'
+    });
 
-
-Router.route('/', function () {
-    this.render('main');
+    this.route('characterList', {
+        path: '/characters'
+    });
 });

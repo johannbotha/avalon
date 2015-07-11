@@ -120,9 +120,7 @@ Template.main.rendered = function() {
 
 Template.main.events({
     'click .add-person': function () {
-        // increment the counter when button is clicked
         $(".names").append('<input class="name" type="text"><br>');
-        Session.set('counter', Session.get('counter') + 1);
     },
 
     'click .submit': function (e, tmpl) {
@@ -134,10 +132,8 @@ Template.main.events({
                 names.push(name);
         });
 
-        var board = new Board(names);
-        Session.set('board', board.hash);
-
-        console.log('submit all names', names);
+        Session.set('board', new Board(names).hash);
+        Router.go('characterList');
     }
 });
 

@@ -47,7 +47,7 @@ function Mordrid(name) {
     this.color =  'red';
     this.character =  'mordrid';
     this.name = name;
-    this.sees = ['dumbRed', 'assasin', 'mordrid'];
+    this.sees = ['dumbRed', 'assasin', 'morgana'];
 }
 
 function Percival(name) {

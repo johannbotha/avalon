@@ -51,7 +51,7 @@ function Mordred(name) {
 }
 
 function Percival(name) {
-    this.color =  'red';
+    this.color =  'blue';
     this.character =  'percival';
     this.name = name;
     this.sees = ['merlin', 'morgana'];
@@ -59,28 +59,28 @@ function Percival(name) {
 }
 
 function DumbBlue1(name) {
-    this.color =  'red';
+    this.color =  'blue';
     this.character =  'dumbBlue1';
     this.name = name;
     this.sees = [];
 }
 
 function DumbBlue2 (name) {
-    this.color =  'red';
+    this.color =  'blue';
     this.character =  'dumbBlue2';
     this.name = name;
     this.sees = [];
 }
 
 function DumbBlue3 (name) {
-    this.color =  'red';
+    this.color =  'blue';
     this.character =  'dumbBlue3';
     this.name = name;
     this.sees = [];
 }
 
 function DumbBlue4 (name) {
-    this.color =  'red';
+    this.color =  'blue';
     this.character =  'dumbBlue4';
     this.name = name;
     this.sees = [];

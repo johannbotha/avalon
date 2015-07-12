@@ -6,6 +6,9 @@ Template.characterList.helpers({
 });
 
 Template.characterList.events = {
+    'click .goto-main': function (event, template) {
+        Router.go('main');
+    },
     'click .person-name': function (event, template) {
         var board = Session.get('board');
         var name = $(event.target).find('.name').html() || $(event.target).html();

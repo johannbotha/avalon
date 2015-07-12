@@ -2,7 +2,7 @@ Template.preview.rendered = function(){
     setTimeout(function() {
         Session.set('currentPlayer', undefined);
         Router.go('characterList');
-    }, 3000);
+    }, 20000);
 };
 
 Template.preview.helpers({

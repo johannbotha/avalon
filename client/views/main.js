@@ -3,13 +3,12 @@ function Board (ppl) {
 
     allPeople = _.shuffle(ppl);
     numOfPPl = allPeople.length;
-    unasignedPeople = allPeople;
+    unassignedPeople = allPeople;
 
     this.hash = {};
 
     this.getRandomPerson = function(){
-        var person = unasignedPeople.shift();
-        return person;
+        return unassignedPeople.shift();
     };
 
     this.hash['merlin'] = new Merlin(this.getRandomPerson());

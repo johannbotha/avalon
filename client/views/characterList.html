@@ -3,7 +3,9 @@
     <div class="container">
         <h1>Players</h1>
         {{#each names}}
-            <div class="person-name">{{this}}</div>
+            <div class="alert alert-success person-name">
+                <h3 class="name">{{this}}</h3>
+            </div>
         {{/each}}
     </div>
 </template>

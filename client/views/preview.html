@@ -1,8 +1,13 @@
 
 <template name="preview">
     {{#with player}}
-    <div>Your role is: {{role}}</div>
-    <div>You see: {{characters}}</div>
-    <div>Being played by: {{players}}</div>
+        <div class="preview-container {{color}}">
+            <div class="preview-label">Your Role Is:</div>
+            <div class="preview-content">{{role}}</div>
+            <div class="preview-label">You Know:</div>
+            <div class="preview-content">{{characters}}</div>
+            <div class="preview-label">Being Played By:</div>
+            <div class="preview-content">{{players}}</div>
+        </div>
     {{/with}}
 </template>

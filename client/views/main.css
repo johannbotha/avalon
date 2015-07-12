@@ -1,1 +1,40 @@
-/* CSS declarations go here */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.person-name {
+    text-align: center;
+}
+
+.person-name:hover {
+    background-color: #d6e9c6;
+}
+
+.red {
+    background-color: #d9534f;
+}
+
+.blue {
+    background-color: #337ab7;
+}
+
+.preview-container {
+    color: white;
+    text-align: center;
+    width: 100%;
+    min-height: 100%;
+    padding-top: 150px;
+}
+
+.preview-label {
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.preview-content {
+    font-size: 60px;
+    margin-bottom: 40px;
+    margin-top: 0;
+}

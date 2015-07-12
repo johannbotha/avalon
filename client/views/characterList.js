@@ -8,10 +8,10 @@ Template.characterList.helpers({
 Template.characterList.events = {
     'click .person-name': function (event, template) {
         var board = Session.get('board');
-        var name = $(event.target).html();
-        var position = Session.get('names')[name];
+        var name = $(event.target).find('.name').html() || $(event.target).html();
+        var currentPlayer = Session.get('names')[name];
 
-        var characters = _.filter(position.sees, function (element) {
+        var characters = _.filter(currentPlayer.sees, function (element) {
             return board[element] !== undefined;
         });
 
@@ -20,9 +20,10 @@ Template.characterList.events = {
         });
 
         Session.set('currentPlayer', {
-            'role': position.character,
+            'role': currentPlayer.character,
             'characters': _.shuffle(characters).join(', '),
-            'players': _.shuffle(players).join(', ')
+            'players': _.shuffle(players).join(', '),
+            'color': currentPlayer.color
         });
 
         Router.go('preview')

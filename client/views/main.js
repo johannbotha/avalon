@@ -179,7 +179,13 @@ Template.main.events({
 
         var board = new Board(names).hash;
         Session.set('board', board);
-        Session.set('names', _.indexBy(board, 'name'));
+        var names = _.indexBy(board, 'name');
+
+        _.each(names, function (name){
+           name.seen = false;
+        });
+
+        Session.set('names', names);
         Router.go('characterList');
     }
 });

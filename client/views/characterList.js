@@ -9,7 +9,17 @@ Template.characterList.events = {
     'click .person-name': function (event, template) {
         var board = Session.get('board');
         var name = $(event.target).find('.name').html() || $(event.target).html();
-        var currentPlayer = Session.get('names')[name];
+        var names = Session.get('names');
+        var currentPlayer = names[name];
+
+        if(currentPlayer.seen){
+            alert('This player has been seen');
+            return;
+        }
+        currentPlayer.seen = true;
+        names[currentPlayer.name] = currentPlayer;
+        Session.set('names', names);
+
 
         var characters = _.filter(currentPlayer.sees, function (element) {
             return board[element] !== undefined;

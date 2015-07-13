@@ -1,11 +1,15 @@
 
 <template name="characterList">
     <div class="container">
-        <i class="fa fa-home goto-main"></i>
-        <h1>Players</h1>
+        <h1>Players
+            <span class="right-btn-container">
+                <button class="btn btn-default right-btn js-start-over">Start Over</button>
+                <button class="btn btn-default right-btn js-reveal {{#if canReveal}}hidden{{/if}}">Reveal Identities</button>
+            </span>
+        </h1>
         {{#each names}}
-            <div class="alert alert-success person-name">
-                <h3 class="name">{{this}}</h3>
+            <div class="alert {{#unless seen}}alert-success{{/unless}} person-name">
+                <h3 class="name">{{name}}</h3>
             </div>
         {{/each}}
     </div>

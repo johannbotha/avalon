@@ -1,3 +1,8 @@
+// CONSTANTS
+
+var _dumbRedName = 'minion of mordred';
+var _dumbBlueName = 'loyal servant of arthur';
+
 
 function Board (ppl) {
 
@@ -17,20 +22,20 @@ function Board (ppl) {
     this.hash['dumbBlue1'] = new DumbBlue1(this.getRandomPerson());
     this.hash['mordred'] = new Mordred(this.getRandomPerson());
 
-    if (numOfPPl == 6){
+    if (numOfPPl > 5){
         this.hash['dumbBlue2'] = new DumbBlue2(this.getRandomPerson());
     }
-    else if (numOfPPl == 7){
-        this.hash['assasin'] = new Assasin(this.getRandomPerson());
+    if (numOfPPl > 6){
+        this.hash['assassin'] = new Assassin(this.getRandomPerson());
     }
-    else if (numOfPPl == 8){
+    if (numOfPPl > 7){
         this.hash['dumbBlue3'] = new DumbBlue3(this.getRandomPerson());
     }
-    else if (numOfPPl == 9){
+    if (numOfPPl > 8){
         this.hash['dumbBlue4'] = new DumbBlue4(this.getRandomPerson());
     }
-    else if (numOfPPl == 10){
-        this.hash['dumbRed1'] = new DumbRed(this.getRandomPerson());
+    if (numOfPPl > 9){
+        this.hash['dumbRed'] = new DumbRed(this.getRandomPerson());
     }
 
 }
@@ -38,20 +43,23 @@ function Board (ppl) {
 function Merlin(name) {
     this.color =  'blue';
     this.character =  'merlin';
+    this.longName = 'merlin';
     this.name = name;
-    this.sees = ['morgana', 'dumbRed', 'assasin'];
+    this.sees = ['morgana', _dumbRedName, 'assassin'];
 }
 
 function Mordred(name) {
     this.color =  'red';
     this.character =  'mordred';
+    this.longName = 'mordred';
     this.name = name;
-    this.sees = ['dumbRed', 'assasin', 'morgana'];
+    this.sees = [_dumbRedName, 'assassin', 'morgana'];
 }
 
 function Percival(name) {
     this.color =  'blue';
     this.character =  'percival';
+    this.longName = 'percival';
     this.name = name;
     this.sees = ['merlin', 'morgana'];
 
@@ -60,6 +68,7 @@ function Percival(name) {
 function DumbBlue1(name) {
     this.color =  'blue';
     this.character =  'dumbBlue1';
+    this.longName = _dumbBlueName;
     this.name = name;
     this.sees = [];
 }
@@ -67,6 +76,7 @@ function DumbBlue1(name) {
 function DumbBlue2 (name) {
     this.color =  'blue';
     this.character =  'dumbBlue2';
+    this.longName = _dumbBlueName;
     this.name = name;
     this.sees = [];
 }
@@ -74,6 +84,7 @@ function DumbBlue2 (name) {
 function DumbBlue3 (name) {
     this.color =  'blue';
     this.character =  'dumbBlue3';
+    this.longName = _dumbBlueName;
     this.name = name;
     this.sees = [];
 }
@@ -81,6 +92,7 @@ function DumbBlue3 (name) {
 function DumbBlue4 (name) {
     this.color =  'blue';
     this.character =  'dumbBlue4';
+    this.longName = _dumbBlueName;
     this.name = name;
     this.sees = [];
 }
@@ -88,22 +100,25 @@ function DumbBlue4 (name) {
 function Morgana(name) {
     this.color =  'red';
     this.character =  'morgana';
+    this.longName = 'morgana';
     this.name = name;
-    this.sees = ['dumbRed', 'assasin', 'mordred'];
+    this.sees = [_dumbRedName, 'assassin', 'mordred'];
 }
 
 function DumbRed(name) {
     this.color =  'red';
     this.character =  'dumbRed';
+    this.longName = _dumbRedName;
     this.name = name;
-    this.sees = ['dumbRed', 'assasin', 'mordred'];
+    this.sees = ['morgana', 'assassin', 'mordred'];
 }
 
-function Assasin(name) {
+function Assassin(name) {
     this.color =  'red';
-    this.character =  'assasin';
+    this.character =  'assassin';
+    this.longName = 'assassin';
     this.name = name;
-    this.sees = ['dumbRed', 'assasin', 'mordred'];
+    this.sees = [_dumbRedName, 'assassin', 'mordred'];
 }
 
 Template.main.helpers({
@@ -154,9 +169,7 @@ Template.main.events({
         e.preventDefault();
 
         var current = Session.get('numPlayers');
-
         current.pop();
-
         Session.set('numPlayers', current);
     },
 
@@ -179,7 +192,7 @@ Template.main.events({
 
         var board = new Board(names).hash;
         Session.set('board', board);
-        var names = _.indexBy(board, 'name');
+        names = _.indexBy(board, 'name');
 
         _.each(names, function (name){
            name.seen = false;
@@ -187,6 +200,10 @@ Template.main.events({
 
         Session.set('names', names);
         Router.go('characterList');
+    },
+
+    'click .js-char-breakdown': function() {
+        Router.go('characterBreakdown');
     }
 });
 

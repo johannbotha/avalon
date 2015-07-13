@@ -10,4 +10,12 @@ Router.map(function(){
     this.route('preview', {
         path: '/preview'
     });
+
+    this.route('characterBreakdown', {
+        path: '/characterBreakdown'
+    });
+
+    this.route('reveal', {
+        path: '/reveal'
+    });
 });

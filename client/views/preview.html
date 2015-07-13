@@ -1,13 +1,23 @@
 
 <template name="preview">
     {{#with player}}
-        <div class="preview-container {{color}}">
+        <div class="preview-container">
             <div class="preview-label">Your Role Is:</div>
-            <div class="preview-content">{{role}}</div>
-            <div class="preview-label">You Know:</div>
-            <div class="preview-content">{{characters}}</div>
-            <div class="preview-label">Being Played By:</div>
-            <div class="preview-content">{{players}}</div>
+            <div class="preview-content {{color}}">{{role}}</div>
+
+            {{#if characters}}
+                <div class="preview-label">You Know:</div>
+                <div class="preview-content">
+                    {{#each characters}}
+                        <span class="{{color}}">{{longName}}</span>{{#unless isLast}}, {{/unless}}
+                    {{/each}}
+                </div>
+                <div class="preview-label">Being Played By:</div>
+                <div class="preview-content">{{players}}</div>
+            {{/if}}
+            <button class="btn btn-default js-done-preview">Done</button>
+
         </div>
+
     {{/with}}
 </template>

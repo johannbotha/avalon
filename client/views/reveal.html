@@ -1,0 +1,23 @@
+<template name="reveal">
+    <div class="container">
+        <h1>Player Identities <span><button class="btn btn-default right-btn js-start-over">Start Over</button></span></h1>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Player</th>
+                <th>Identity</th>
+            </tr>
+            </thead>
+            <tbody>
+                {{#each names}}
+                    <tr>
+                        <td>{{name}}</td>
+                        <td class="{{color}}">{{longName}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</template>

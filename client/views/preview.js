@@ -2,7 +2,7 @@ Template.preview.rendered = function(){
     setTimeout(function() {
         Session.set('currentPlayer', undefined);
         Router.go('characterList');
-    }, 20000);
+    }, 10000);
 };
 
 Template.preview.helpers({
@@ -12,7 +12,15 @@ Template.preview.helpers({
 });
 
 Template.preview.events = {
-    'click .person-name': function (event, template) {
-        
+    'click .js-done-preview': function (event, template) {
+
+        // this disgusting hack gets the highest timeout ID
+        // then using that, we can make sure all timeouts are cleared
+        var highestTimeoutId = setTimeout(";");
+        for (var i = 0 ; i < highestTimeoutId ; i++) {
+            clearTimeout(i);
+        }
+
+        Router.go('characterList');
     }
 };
